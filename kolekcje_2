@@ -1,0 +1,150 @@
+//l7_z1
+//import java.util.ArrayList;
+//import java.util.HashSet;
+//import java.util.List;
+//import java.util.Random;
+//import java.util.Set;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        List<Integer> wynik = lotto(6, 49);
+//        System.out.println(wynik);
+//    }
+//
+//    public static List<Integer> lotto(int m, int n) {
+//        if (m > n) {
+//            throw new IllegalArgumentException("Liczba liczb do wylosowania nie może być większa od ilości liczb w puli.");
+//        }
+//
+//        List<Integer> wynik = new ArrayList<>();
+//        Set<Integer> wylosowane = new HashSet<>();
+//        Random rand = new Random();
+//
+//        while (wylosowane.size() < m) {
+//            int liczba = rand.nextInt(n) + 1; // Losowanie liczby z zakresu 1 - n (włącznie)
+//            wylosowane.add(liczba);
+//        }
+//
+//        wynik.addAll(wylosowane);
+//        return wynik;
+//    }
+//}
+
+//l7_z2
+//import java.util.HashSet;
+//        import java.util.Set;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        Set<Integer> liczby = new HashSet<>();
+//
+//        // a. Dodawanie liczb do zbioru za pomocą metody .add()
+//        liczby.add(10);
+//        liczby.add(20);
+//        liczby.add(30);
+//        liczby.add(40);
+//        liczby.add(50);
+//
+//        // b. Sprawdzanie czy zbiór zawiera liczby 5 lub 25
+//        System.out.println("Czy zbiór zawiera liczbę 5? " + liczby.contains(5));
+//        System.out.println("Czy zbiór zawiera liczbę 25? " + liczby.contains(25));
+//
+//        // c. Wyświetlanie zawartości zbioru za pomocą pętli for each
+//        System.out.println("Zawartość zbioru:");
+//        for (int liczba : liczby) {
+//            System.out.println(liczba);
+//        }
+//
+//        // d. Czyszczenie zbioru i ponowne wyświetlanie zawartości
+//        liczby.clear();
+//        System.out.println("Po wyczyszczeniu zbioru, jego zawartość:");
+//        for (int liczba : liczby) {
+//            System.out.println(liczba);
+//        }
+//    }
+//}
+//l7_z3
+//import java.util.ArrayDeque;
+//        import java.util.Queue;
+//        import java.util.Deque;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        Queue<String> students = new ArrayDeque<>();
+//        Deque<String> test = new ArrayDeque<>();
+//
+//        // a. Dodawanie imion do kolejki za pomocą metody .add()
+//        students.add("Anna");
+//        students.add("Bob");
+//        students.add("Charlie");
+//        students.add("David");
+//        students.add("Eve");
+//
+//        // b. Przenoszenie 2 osób do drugiej kolejki
+//        test.offer(students.poll());
+//        test.offer(students.poll());
+//
+//        // c. Dodawanie kolejnej osoby na początek kolejki
+//        students.offer("Frank");
+//
+//        // d. Wyświetlanie zawartości kolejek
+//        System.out.println("Zawartość kolejki students:");
+//        for (String student : students) {
+//            System.out.println(student);
+//        }
+//
+//        System.out.println("\nZawartość kolejki test:");
+//        for (String person : test) {
+//            System.out.println(person);
+//        }
+//    }
+//}
+//l7_z4
+import java.util.HashMap;
+import java.util.Map;
+
+class AddressBook {
+    private Map<String, Integer> addressBook;
+
+    public AddressBook() {
+        addressBook = new HashMap<>();
+    }
+
+    public void add(String name, int number) {
+        addressBook.put(name, number);
+    }
+
+    public boolean doesNameExist(String name) {
+        return addressBook.containsKey(name);
+    }
+
+    public int get(String name) {
+        return addressBook.get(name);
+    }
+
+    public void printAll() {
+        for (Map.Entry<String, Integer> entry : addressBook.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+
+    public static void main(String[] args) {
+        AddressBook addressBook = new AddressBook();
+
+        // Dodawanie numerów do książki
+        addressBook.add("John", 123456789);
+        addressBook.add("Alice", 987654321);
+        addressBook.add("Bob", 456789123);
+
+        // Sprawdzanie czy osoba istnieje w książce
+        System.out.println("Czy 'Alice' istnieje w książce adresowej? " + addressBook.doesNameExist("Alice"));
+        System.out.println("Czy 'Charlie' istnieje w książce adresowej? " + addressBook.doesNameExist("Charlie"));
+
+        // Pobieranie numeru osoby
+        System.out.println("Numer 'John': " + addressBook.get("John"));
+
+        // Wyświetlanie wszystkich numerów z książki
+        System.out.println("\nWszystkie numery w książce adresowej:");
+        addressBook.printAll();
+    }
+}
