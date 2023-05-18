@@ -1,0 +1,130 @@
+//l6_z1
+//public class Sklep<T1, T2> {
+//    private T1 produkt;
+//    private T2 cena;
+//
+//    public Sklep(T1 produkt, T2 cena) {
+//        this.produkt = produkt;
+//        this.cena = cena;
+//    }
+//
+//    public T1 getProdukt() {
+//        return produkt;
+//    }
+//
+//    public void setProdukt(T1 produkt) {
+//        this.produkt = produkt;
+//    }
+//
+//    public T2 getCena() {
+//        return cena;
+//    }
+//
+//    public void setCena(T2 cena) {
+//        this.cena = cena;
+//    }
+//
+//    public static void main(String[] args) {
+//        Sklep<String, Double> sklep1 = new Sklep<>("Książka", 29.99);
+//        Sklep<Integer, String> sklep2 = new Sklep<>(123, "10% off");
+//
+//        System.out.println("Sklep 1 - Produkt: " + sklep1.getProdukt() + ", Cena: " + sklep1.getCena());
+//        System.out.println("Sklep 2 - Produkt: " + sklep2.getProdukt() + ", Cena: " + sklep2.getCena());
+//
+//        sklep1.setCena(39.99);
+//        sklep2.setProdukt(456);
+//
+//        System.out.println("\nPo zmianach:");
+//        System.out.println("Sklep 1 - Produkt: " + sklep1.getProdukt() + ", Cena: " + sklep1.getCena());
+//        System.out.println("Sklep 2 - Produkt: " + sklep2.getProdukt() + ", Cena: " + sklep2.getCena());
+//    }
+//}
+//l6_z3
+//import java.util.List;
+//
+//public class Main {
+//    public static void printWildcardList(List<?> lista) {
+//        for (Object element : lista) {
+//            System.out.println(element);
+//        }
+//    }
+//
+//    public static <T extends Number> void printParametrizedList(List<T> lista) {
+//        for (T element : lista) {
+//            System.out.println(element);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        List<Integer> listaInt = List.of(1, 2, 3, 4, 5);
+//        List<String> listaStr = List.of("A", "B", "C", "D", "E");
+//
+//        System.out.println("Metoda z wildcards:");
+//        printWildcardList(listaInt);
+//        printWildcardList(listaStr);
+//
+//        System.out.println("\nMetoda z typami sparametryzowanymi:");
+//        printParametrizedList(listaInt);
+//        // printParametrizedList(listaStr); // To wywołanie spowoduje błąd kompilacji
+//    }
+//}
+//l5_z2
+//WYJATEK
+//public class TooFarException extends Exception {
+//    public TooFarException() {
+//        super("Jesteś za daleko");
+//    }
+//}
+//RESZTA
+//import java.util.Scanner;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.print("Podaj liczbę: ");
+//        int liczba = scanner.nextInt();
+//
+//        try {
+//            if (liczba > 100) {
+//                throw new TooFarException();
+//            } else {
+//                System.out.println("Liczba jest akceptowalna.");
+//            }
+//        } catch (TooFarException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
+//}
+//l4_z6
+//import java.util.stream.IntStream;
+//
+//public class Main {
+//    public static void main(String[] args) {
+//        IntStream.rangeClosed(0, 50)
+//                .filter(n -> n % 2 != 0)
+//                .mapToDouble(n -> n / 5.0)
+//                .mapToObj(n -> "Liczba: " + String.format("%.2f", n))
+//                .forEach(System.out::println);
+//    }
+//}
+//l6_z4
+//import java.util.ArrayList;
+//        import java.util.List;
+//
+//public class Main {
+//    public static <T extends Number> List<T> mergeLists(List<T> list1, List<T> list2) {
+//        List<T> mergedList = new ArrayList<>();
+//        mergedList.addAll(list1);
+//        mergedList.addAll(list2);
+//        return mergedList;
+//    }
+//
+//    public static void main(String[] args) {
+//        List<Integer> list1 = List.of(1, 2, 3);
+//        List<Double> list2 = List.of(4.5, 5.5, 6.5);
+//
+//        List<Number> mergedList = mergeLists(list1, list2);
+//        System.out.println(mergedList);
+//    }
+//}
